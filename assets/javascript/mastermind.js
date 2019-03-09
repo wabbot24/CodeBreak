@@ -30,7 +30,7 @@ function gamecode() {
         $("#" + i).attr("answervalue", a);
         $("#" + i).css("background-color", colors["c" + a]);
     }
-    console.log(codeArray);
+    // console.log(codeArray);
 }
 gamecode();
 // console.log(codeArray);
@@ -97,16 +97,16 @@ $(".guess").on("click", function () {
             }
         }
     }
-    console.log(guesses);
-    console.log(answers);
+    // console.log(guesses);
+    // console.log(answers);
     for (i = 1; i <= reds; i++) {
         $("#" + (3 + i) + currentrow).css("background-color", "red");
     }
     for (i = 1; i <= whites; i++) {
         $("#" + (3 + i + reds) + currentrow).css("background-color", "white");
     }
-    console.log(reds);
-    console.log(whites);
+    // console.log(reds);
+    // console.log(whites);
     currentrow--;
     $(this).css("display", "none");
     $("#r" + currentrow).css("background-color", "white");
@@ -121,7 +121,7 @@ $(".guess").on("click", function () {
         gameover();
     }
 });
-console.log(guessesmade);
+// console.log(guessesmade);
 function gameover() {
     $(".answerkey").css("display", "table");
     averageGuesses.push(guessesmade);
