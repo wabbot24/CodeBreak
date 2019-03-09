@@ -30,10 +30,9 @@ function gamecode() {
         $("#" + i).attr("answervalue", a);
         $("#" + i).css("background-color", colors["c" + a]);
     }
-    // console.log(codeArray);
+    console.log(codeArray);
 }
 gamecode();
-// console.log(codeArray);
 
 // adds pickvalue 0 to every cell
 function pickvaluereset() {
