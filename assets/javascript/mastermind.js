@@ -124,8 +124,8 @@ $(".guess").on("click", function () {
 function gameover() {
     $(".answerkey").css("display", "table");
     averageGuesses.push(guessesmade);
-    const reducer = (a, c) => a + c;
-    $("#avgguesses").text(averageGuesses.reduce(reducer) / averageGuesses.length);
+    const sum = (a, c) => a + c;
+    $("#avgguesses").text(averageGuesses.reduce(sum) / averageGuesses.length);
     $(".playagain").css("display", "block");
     $(".answercode").css("display", "block");
 }
