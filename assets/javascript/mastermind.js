@@ -1,4 +1,9 @@
 var currentrow = 9;
+var wins = 0;
+var losses = 0;
+var guessesmade = 0;
+var averageGuesses = [];
+// $(currentrow).css("background-color", "white");
 
 $("#green").attr("colorvalue", 1);
 $("#red").attr("colorvalue", 2);
@@ -25,17 +30,21 @@ function gamecode() {
         $("#" + i).attr("answervalue", a);
         $("#" + i).css("background-color", colors["c" + a]);
     }
+    console.log(codeArray);
 }
 gamecode();
-console.log(codeArray);
+// console.log(codeArray);
 
 // adds pickvalue 0 to every cell
-for (i = 0; i < 10; i++) {
-    for (j = 0; j < 4; j++) {
-        $("#" + j + i).attr("pickvalue", 0);
+function pickvaluereset() {
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < 4; j++) {
+            $("#" + j + i).attr("pickvalue", 0);
+            $("#" + j + i).css("background-color", "");
+        }
     }
 }
-
+pickvaluereset();
 
 // code for buttons on left that add color picks to current row
 $(".button").on("click", function () {
@@ -61,6 +70,7 @@ $(".button").on("click", function () {
 
 // evaluates pick vs gamecode
 $(".guess").on("click", function () {
+    guessesmade++;
     var reds = 0;
     var whites = 0;
     var guesses = [];
@@ -99,6 +109,44 @@ $(".guess").on("click", function () {
     console.log(whites);
     currentrow--;
     $(this).css("display", "none");
+    $("#r" + currentrow).css("background-color", "white");
+
+    if (reds === 4) {
+        wins++;
+        $("#wins").text(wins);
+        gameover();
+    }
+    if (currentrow < 0) {
+        losses++;
+        gameover();
+    }
+});
+console.log(guessesmade);
+function gameover() {
+    $(".answerkey").css("display", "table");
+    averageGuesses.push(guessesmade);
+    const reducer = (a, c) => a + c;
+    $("#avgguesses").text(averageGuesses.reduce(reducer) / averageGuesses.length);
+    $(".playagain").css("display", "block");
+    $(".answercode").css("display", "block");
+}
+
+$(".playagain").on("click", function () {
+    pickvaluereset();
+    currentrow = 9;
+    guessesmade = 0;
+    gamecode();
+    $(".answerkey").css("display", "none");
+    for (i = 0; i < 10; i++) {
+        for (j = 4; j < 8; j++) {
+            $("#" + j + i).css("background-color", "rgb(165, 164, 164)");
+        }
+    }
+    for (i = 0; i < 9; i++) {
+        $("#r" + i).css("background-color", "");
+    }
+    $(".playagain").css("display", "none");
+    $(".answercode").css("display", "none");
 });
 
 // deselecting picked colors in current row

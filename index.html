@@ -22,8 +22,17 @@
     <div class="button" id="lightgray">Filler Square</div>
     <div class="button" id="clear">Clear Row</div>
 
-    <table class="answerkey" style="width:324px">
-        <tr class="">
+    <div class="key"><h2>KEY</h2>A red square indicates a correct color in the correct place. A white square indicates a correct color in the wrong place. Four red squares is an exact match!</div>
+
+    <img src="assets/images/mastermind-cover.png" alt="Mastermind Title" id="mastermind">
+
+    <div class="wins">Wins: <span id="wins"></span></div>
+    <div class="losses">Losses: <span id="losses"></span></div>
+    <div class="avgguesses">Average Guesses: <span id="avgguesses"></span></div>
+
+    <div class="answercode">ANSWER CODE:</div>
+    <table class="answerkey" style="width:328px">
+        <tr class="answerkeyinfo">
             <td id="0"></td>
             <td id="1"></td>
             <td id="2"></td>
@@ -32,63 +41,64 @@
     </table>
 
     <div class="guess">GUESS</div>
+    <div class="playagain">PlAY AGAIN</div>
 
-    <table class="main" style="width:324px">
-        <tr class="rowmain" class="rowmain0">
+    <table class="main" style="width:328px">
+        <tr class="rowmain" id="r0">
             <td id="00"></td>
             <td id="10"></td>
             <td id="20"></td>
             <td id="30"></td>
         </tr>
-        <tr class="rowmain" class="rowmain1">
+        <tr class="rowmain" id="r1">
             <td id="01"></td>
             <td id="11"></td>
             <td id="21"></td>
             <td id="31"></td>
         </tr>
-        <tr class="rowmain">
+        <tr class="rowmain" id="r2">
             <td id="02"></td>
             <td id="12"></td>
             <td id="22"></td>
             <td id="32"></td>
         </tr>
-        <tr class="rowmain">
+        <tr class="rowmain" id="r3">
             <td id="03"></td>
             <td id="13"></td>
             <td id="23"></td>
             <td id="33"></td>
         </tr>
-        <tr class="rowmain">
+        <tr class="rowmain" id="r4">
             <td id="04"></td>
             <td id="14"></td>
             <td id="24"></td>
             <td id="34"></td>
         </tr>
-        <tr class="rowmain">
+        <tr class="rowmain" id="r5">
             <td id="05"></td>
             <td id="15"></td>
             <td id="25"></td>
             <td id="35"></td>
         </tr>
-        <tr class="rowmain" id="6">
+        <tr class="rowmain" id="r6">
             <td id="06"></td>
             <td id="16"></td>
             <td id="26"></td>
             <td id="36"></td>
         </tr>
-        <tr class="rowmain" id="7">
+        <tr class="rowmain" id="r7">
             <td id="07"></td>
             <td id="17"></td>
             <td id="27"></td>
             <td id="37"></td>
         </tr>
-        <tr class="rowmain" class="8">
+        <tr class="rowmain" id="r8">
             <td id="08"></td>
             <td id="18"></td>
             <td id="28"></td>
             <td id="38"></td>
         </tr>
-        <tr class="rowmain" class="9">
+        <tr class="rowmain" id="r9">
             <td id="09"></td>
             <td id="19"></td>
             <td id="29"></td>
@@ -177,8 +187,6 @@
             <td id="69"></td>
             <td id="79"></td>
         </tr>
-
-
     </table>
 
     <script src="assets/javascript/mastermind.js"></script>
