@@ -117,6 +117,7 @@ $(".guess").on("click", function () {
     }
     if (currentrow < 0) {
         losses++;
+        $("#losses").text(losses);
         gameover();
     }
 });
