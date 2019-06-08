@@ -87,7 +87,7 @@ td {
 }
 table {
     position: absolute;
-    bottom: 40px;
+    top: 40px;
     left: 200px;
 }
 #feedback {
