@@ -1,6 +1,6 @@
-# Mastermind
+# Code Break
 
-This is a browser game for the classic board game Mastermind.
+This is a browser game based on the classic board game Mastermind.
 
 GAME PLAY: 
 - There is a randomly selected 4 color code that you are trying to break.
