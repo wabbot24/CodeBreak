@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mastermind</title>
+    <title>CodeBreak</title>
+    <link rel="icon" href="assets/images/icon.png">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -13,46 +14,61 @@
 </head>
 
 <body>
-    <div class="button" id="green"></div>
-    <div class="button" id="red"></div>
-    <div class="button" id="orange"></div>
-    <div class="button" id="yellow"></div>
-    <div class="button" id="blue"></div>
-    <div class="button" id="purple"></div>
-    <div class="button" id="lightgray">Filler Square</div>
-    <div class="button" id="clear">Clear Row</div>
+    <div class="container">
+        <div class="buttons">
+            <div class="button" id="clear">Clear Row</div>
+            <div class="button" id="green"></div>
+            <div class="button" id="red"></div>
+            <div class="button" id="orange"></div>
+            <!-- <div class="button" id="yellow"></div>
+            <div class="button" id="blue"></div>
+            <div class="button" id="purple"></div>
+            <div class="button" id="lightgray">Filler Square</div> -->
+        </div>
 
-    <div class="key"><h2>KEY</h2>A red square indicates a correct color in the correct place. A white square indicates a correct color in the wrong place. Four red squares is an exact match!</div>
+        <div class="buttons1">
+            <div class="button" id="lightgray">Filler Square</div>
+            <div class="button" id="yellow"></div>
+            <div class="button" id="blue"></div>
+            <div class="button" id="purple"></div>
+        </div>
 
-    <img src="assets/images/mastermind-cover.png" alt="Mastermind Title" id="mastermind">
+        <!-- <div class="key">
+            <h2>KEY</h2>A red square indicates a correct color in the correct place. A white square indicates a correct
+            color in the wrong place. Four red squares is an exact match!
+        </div> -->
 
-    <div class="points">Point Total: <span id="points"></span></div>
-    <div class="wins">Consecutive wins: <span id="wins"></span></div>
-    <div class="avgguesses">Average Guesses: <span id="avgguesses"></span></div>
+        <!-- <img src="assets/images/mastermind-cover.png" alt="Mastermind Title" id="mastermind"> -->
+        <img src="assets/images/CodeBreaker logo.png" alt="Code Break Logo" id="codebreak">
 
-    <div class="answercode">ANSWER CODE:</div>
-    <table class="answerkey" style="width:328px">
-        <tr class="answerkeyinfo">
-            <td id="0"></td>
-            <td id="1"></td>
-            <td id="2"></td>
-            <td id="3"></td>
-        </tr>
-    </table>
+        <div class="points">Score: <span id="points"></span></div>
+        <!-- <div class="wins">Consecutive wins: <span id="wins"></span></div> -->
+        <!-- <div class="avgguesses">Avg Guesses: <span id="avgguesses"></span></div> -->
 
-    <button class="guess">GUESS</button>
-    <button class="playagain">PLAY AGAIN</button>
-    <button class="restart">RESTART</button>
+        <div class="answercode">ANSWER CODE:</div>
+        <table class="answerkey" style="width:244px">
+            <tr class="answerkeyinfo">
+                <td id="0"></td>
+                <td id="1"></td>
+                <td id="2"></td>
+                <td id="3"></td>
+            </tr>
+        </table>
 
-    <table class="main" style="width:328px"></table>
+        <button class="guess">GUESS</button>
+        <button class="playagain">PLAY AGAIN</button>
+        <button class="restart">RESTART</button>
 
-    <table id="feedback"></table>
+        <table class="main" style="width:244px"></table>
+
+        <table id="feedback"></table>
+    </div>
 
     <!-- *** to reset local variables, untoggle intialize.js below *** -->
     <!-- <script src="assets/javascript/initialize.js"></script> -->
 
     <script src="assets/javascript/mastermind.js"></script>
-    
+
 </body>
 
 </html>

@@ -19,12 +19,25 @@ if (!localStorage.wins) {
 } else {
     var boardChange = false;
     var guessesmade = 0;
-    var currentrow = 10 - localStorage.multiplier;
+    var currentrow = localStorage.currentrow;   
     var totalGuesses = localStorage.averageGuesses * localStorage.gamesPlayed;
     let roundedAvg = localStorage.averageGuesses;
     $("#avgguesses").text(round(roundedAvg, 2));
     $("#wins").text(localStorage.wins);
     $("#points").text(localStorage.points);
+    // for (i = 0; i < 10; i++) {
+    //     for (j = 0; j < 4; j++) {  
+    //         let p = "#" + j + i;
+    //         let savedValue = localStorage.getItem(p);
+    //         $("#" + j + i).attr("pickvalue", savedValue);
+    //         $("#" + j + i).css("background-color", colors["c" + savedValue]);
+    //     }
+    //     for (let j = 4; j < 8; j++) {
+    //         let f = "#" + j + i;
+    //         let savedFeedback = localStorage.getItem(f);
+    //         $("#" + j + i).css("background-color", savedFeedback);
+    //     }
+    // }
 }
 
 // resetValues();
@@ -43,6 +56,7 @@ function resetBoard() {
 }
 
 function initiateBoard() {
+    ``
     var rows = 11 - localStorage.multiplier;
     createTable(rows);
     feedBackSquares(rows);
@@ -60,6 +74,8 @@ function createTable(rows) {
         $(".main").append(tr);
     }
 }
+
+$("#r" + currentrow).css("background-color", "white");
 
 function feedBackSquares(rows) {
     for (let i = 0; i < rows; i++) {
@@ -113,16 +129,48 @@ function gamecode() {
 }
 gamecode();
 
+function pickValueSet() {
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < 4; j++) {
+            let p = "#" + j + i;
+            let savedValue = localStorage.getItem(p);
+            if (savedValue) {
+                $("#" + j + i).attr("pickvalue", savedValue);
+                $("#" + j + i).css("background-color", colors["c" + savedValue]);
+            }
+            else {
+                $("#" + j + i).attr("pickvalue", 0);
+                $("#" + j + i).css("background-color", "");
+            }
+        }
+        for (let j = 4; j < 8; j++) {
+            let f = "#" + j + i;
+            let savedFeedback = localStorage.getItem(f);
+            if (savedFeedback) {
+                let savedFeedback = localStorage.getItem(f);
+                $("#" + j + i).css("background-color", savedFeedback);
+            }
+        }
+    }
+}
+pickValueSet();
+
 // adds pickvalue 0 to every cell. This ensures a clean board so only user can generate codes
 function pickvaluereset() {
     for (i = 0; i < 10; i++) {
         for (j = 0; j < 4; j++) {
             $("#" + j + i).attr("pickvalue", 0);
+            let p = "#" + j + i;
+            localStorage.removeItem(p);
             $("#" + j + i).css("background-color", "");
+        }
+        for (let j = 4; j < 8; j++) {
+            let f = "#" + j + i;
+            localStorage.removeItem(f);
         }
     }
 }
-pickvaluereset();
+// pickvaluereset();
 
 var canSubmit = false;
 // code for buttons on left that add color picks to current row
@@ -143,8 +191,8 @@ $(".button").on("click", function () {
         }
     }
     // Looks at pickvalue in each cell of current row. Only if all 4 are filled with a code color can the user submit their guess
-    if ($("#" + 0 + currentrow).attr("pickvalue") > 0 && $("#" + 1 + currentrow).attr("pickvalue") > 0 && 
-    $("#" + 2 + currentrow).attr("pickvalue") > 0 && $("#" + 3 + currentrow).attr("pickvalue") > 0) {
+    if ($("#" + 0 + currentrow).attr("pickvalue") > 0 && $("#" + 1 + currentrow).attr("pickvalue") > 0 &&
+        $("#" + 2 + currentrow).attr("pickvalue") > 0 && $("#" + 3 + currentrow).attr("pickvalue") > 0) {
         $(".guess").css("display", "block");
         canSubmit = true;
     }
@@ -173,14 +221,16 @@ guessInput.on("click", function () {
     for (i = 0; i < 4; i++) {
         var answerval = $("#" + i).attr("answervalue");
         var pickval = $("#" + i + currentrow).attr("pickvalue");
+        let p = "#" + i + currentrow;
+        localStorage.setItem(p, pickval);
         if (pickval === answerval) {
-        // inserts "x" in place of matches, effectively "x"ing them out so they can't be double counted, adds red marker
+            // inserts "x" in place of matches, effectively "x"ing them out so they can't be double counted, adds red marker
             guesses[i] = "x";
             answers[i] = "x";
             reds++;
         }
         else {
-        // if no direct match, sets pick values for secondary query
+            // if no direct match, sets pick values for secondary query
             guesses[i] = answerval;
             answers[i] = pickval;
         }
@@ -208,14 +258,19 @@ guessInput.on("click", function () {
     //displays the reds and whites to user. In our case, 1 red + 2 whites, alerting user their guess contains 3 matching colors, 1 of which is in correct position
     for (i = 1; i <= reds; i++) {
         $("#" + (3 + i) + currentrow).css("background-color", "red");
+        let r = "#" + (3 + i) + currentrow;
+        localStorage.setItem(r, "red");
     }
     for (i = 1; i <= whites; i++) {
         $("#" + (3 + i + reds) + currentrow).css("background-color", "white");
+        let w = "#" + (3 + i + reds) + currentrow;
+        localStorage.setItem(w, "white");
     }
 
     // Hides Submit button, moves user to next row, prevents submit until full user code entered, and sets background color of current row to white as visual cue
     $(this).css("display", "none");
     currentrow--;
+    localStorage.currentrow = currentrow;
     canSubmit = false;
     $("#r" + currentrow).css("background-color", "white");
 
@@ -262,6 +317,7 @@ $(".playagain").on("click", function () {
     boardChange = false;
     pickvaluereset();
     currentrow = 10 - localStorage.multiplier;
+    $("#r" + currentrow).css("background-color", "white");
     guessesmade = 0;
     gamecode();
     $(".answerkey").css("display", "none");
@@ -279,10 +335,10 @@ $(".playagain").on("click", function () {
 
 // Allows user to deselect colors in their current guess row by clicking on them
 $("td", ".rowmain").on("click", function () {
-    $(".guess").css("display", "none");
-    canSubmit = false;
     var a = parseInt(this.id) - currentrow;
     if (a % 10 === 0) {
+        $(".guess").css("display", "none");
+        canSubmit = false;
         $(this).attr("pickvalue", 0);
         $(this).css("background-color", "");
     }
@@ -303,6 +359,7 @@ function resetValues() {
 
     guessesmade = 0;
     currentrow = 10 - localStorage.multiplier;
+    $("#r" + currentrow).css("background-color", "white");
     totalGuesses = localStorage.averageGuesses * localStorage.gamesPlayed;
     let roundedAvg = localStorage.averageGuesses;
     $("#avgguesses").text(round(roundedAvg, 2));

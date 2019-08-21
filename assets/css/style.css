@@ -1,139 +1,156 @@
 body {
     background-image: url(../images/white-waves.png);
 }
-#mastermind {
-    width: 700px;
+.container {
+    margin: auto;
+}
+#codebreak {
+    width: 580px;
     position: absolute;
     top: 0px;
-    left: 620px;
+    left: 25px;
+}
+.buttons {
+    position: absolute;
+    left: 10px;
+    margin-top: 150px;
+}
+.buttons1 {
+    position: absolute;
+    left: 82px;
+    margin-top: 150px;
 }
 #green {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: green;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
-    margin-top: 10px;
+    margin-bottom: 6px;
     
 }
 #red {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: red;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
+    margin-bottom: 6px;
 }
 #yellow {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: yellow;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
+    margin-bottom: 6px;
 }
 #purple {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: purple;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
+    margin-bottom: 6px;
 }
 #blue {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: blue;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
+    margin-bottom: 6px;
 }
 #orange {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: orange;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
+    margin-bottom: 6px;
 }
 #lightgray, #clear {
-    padding-top: 20px;
+    padding: 10px 0px;
     text-align: center;
     font-size: 20px;
-    width: 80px;
-    height: 60px;
+    width: 60px;
+    height: 40px;
     background-color: lightgray;
     border-style: solid;
     border-width: 3px;
-    margin: 2px;
+    margin-bottom: 6px;
 }
 #clear {
     background-color: white;
 }
 .rowmain {
-    height: 82px;
+    height: 62px;
     border-bottom-width: 2px;
     border-left-width: 3px;
     border-style: solid;
 }
 td {
     border: 1px solid black;
-    /* height: 80px; */
-    width: 41px;
+    /* height: 60px; */
+    width: 31px;
 }
 .rowmain td, .answerkey td {
-    background-image: url(../images/circlesquarefinal.png);
+    background-image: url(../images/circlesquare30.png);
 }
 table {
     position: absolute;
-    top: 40px;
-    left: 200px;
+    top: 140px;
+    left: 160px;
 }
 #feedback {
     position: absolute;
-    top 2px;
-    left: 528px; 
+    top 22px;
+    left: 404px; 
 }
 .rowfeedback {
     background-color: rgb(165, 164, 164);
-    height: 41px;
+    height: 31px;
 }
 .rowfeedback1 {
     background-color: rgb(165, 164, 164);
-    height: 41px;
+    height: 31px;
     border-bottom-width: 2px;
     border-style: solid;
 }
 .guess, .playagain, .restart {
-    font-size: 40px;
-    padding: 17px 40px;
+    font-size: 28px;
+    font-weight: 600;
+    width: 144px;
+    padding: 14px 0px;
     border-style: solid;
     border-width: 3px;
+    border-color: black;
     position: absolute;
-    top: 500px;
-    left: 640px;
+    top: 440px; 
+    left: 6px;
     background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
     display: none;
 }
 .guess:hover, .playagain:hover, .restart:hover {
     box-shadow: 1px 2px 4px 2px rgba(199, 73, 178, 0.8);
 }
+.restart {
+
+}
 .answerkey {
     position: absolute;
-    top: 390px;
-    left: 640px;
-    height: 84px;
+    top: 265px;
+    left: 492px;
+    height: 64px;
     border-width: 2px;
     border-style: solid;
     display: none;
 }
-.key {
-    /* text-align: center; */
+/* .key {
     font-size: 19px;
     position: absolute;
-    top: 651px;
-    left: 625px;
+    top: 401px;
+    left: 460px;
     width: 200px;
     border-style: solid;
     border-width: 3px;
@@ -141,7 +158,7 @@ table {
     box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.4);
     padding: 10px;
     background-color: white;
-}
+} */
 h2 {
     font-size: 22px;
     text-align: center;
@@ -151,18 +168,27 @@ h2 {
 }
 .wins, .points, .avgguesses, .answercode {
     position: absolute;
-    top: 200px;
-    left: 640px;
-    font-size: 40px;
+    top: 160px;
+    left: 480px;
+    font-size: 35px;
 }
-.wins {
-    top: 250px;
-}
-.avgguesses {
-    top: 300px;
+#wins, #points, #avgguesses {
+    background-color: black;
+    color: white;
+    font-weight: 800;
+    padding: 5px 15px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+    box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.4);
 }
 .answercode {
-    top: 350px;
+    position: absolute;
+    top: 230px;
+    left: 487px;
     color: #e81d1d;
     display: none;
 }
+/* .avgguesses {
+    top: 300px;
+} */
