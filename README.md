@@ -1,6 +1,6 @@
 # Code Break
 
-This is a browser game based on the classic board game Mastermind.
+This is a browser game based on the classic board game Mastermind. I completed the first version a few weeks into learning to code, and continued to add features over the next several months. To play the game, visit https://wabbot24.github.io/CodeBreak/
 
 GAME PLAY: 
 - There is a randomly selected 4 color code that you are trying to break.
